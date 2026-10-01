@@ -1,0 +1,143 @@
+/* ----------------------------------------------------------------------
+ * SanctionsBanner — sticky one-line sanctions status bar w/ slide-down body.
+ * Sits under page header (z-index 5). Owns its own border/shadow so the
+ * inner SanctionsPanelBody renders chrome-less.
+ * ---------------------------------------------------------------------- */
+
+.wrapper {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+  flex-shrink: 0;
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 56px;
+  padding: 0 16px;
+  font-size: 13px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  border-bottom: 1px solid transparent;
+  transition: background 120ms ease;
+}
+
+/* status backgrounds */
+.barGreen {
+  background: rgba(16, 185, 129, 0.12);
+  color: #047857;
+  border-bottom-color: rgba(16, 185, 129, 0.28);
+}
+.barYellow {
+  background: rgba(245, 158, 11, 0.14);
+  color: #92400e;
+  border-bottom-color: rgba(245, 158, 11, 0.32);
+}
+.barRed {
+  background: rgba(239, 68, 68, 0.14);
+  color: #991b1b;
+  border-bottom-color: rgba(239, 68, 68, 0.3);
+}
+.barNeutral {
+  background: #f3f4f6;
+  color: #4b5563;
+  border-bottom-color: #e5e7eb;
+}
+.barError {
+  background: rgba(239, 68, 68, 0.08);
+  color: #7f1d1d;
+  border-bottom-color: rgba(239, 68, 68, 0.28);
+}
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  background: #fff;
+  font-weight: 800;
+  font-size: 15px;
+  box-shadow: 0 0 0 1px currentColor inset;
+  flex-shrink: 0;
+}
+
+.summary {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  /* allow wrap on very narrow widths but stay single-line typically */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.whyBtn,
+.rescreenBtn {
+  background: #fff;
+  color: inherit;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  padding: 5px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 120ms ease, opacity 120ms ease;
+  /* currentColor border tints w/ status — softens by halving opacity */
+  border-color: rgba(0, 0, 0, 0.18);
+  font-variant-numeric: tabular-nums;
+}
+.whyBtn:hover,
+.rescreenBtn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.7);
+}
+.rescreenBtn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.chev {
+  display: inline-block;
+  margin-left: 4px;
+  transition: transform 160ms ease;
+}
+.chevOpen {
+  transform: rotate(180deg);
+}
+
+/* Slide-down container — collapses via max-height. Inner padding lives on
+ * the children so animation doesn't have to fight padding. */
+.body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 220ms ease;
+  background: #fff;
+}
+.bodyOpen {
+  /* Generous cap — match list can grow; overflow handled by parent scroll. */
+  max-height: 2000px;
+}
+
+.rescreenError {
+  padding: 6px 14px;
+  font-size: 11px;
+  color: #b91c1c;
+  background: rgba(239, 68, 68, 0.08);
+  border-top: 1px solid rgba(239, 68, 68, 0.18);
+}

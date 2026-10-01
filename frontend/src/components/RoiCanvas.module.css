@@ -1,0 +1,78 @@
+.canvas {
+  position: absolute;
+  inset: 0;
+  cursor: crosshair;
+  touch-action: none;
+  user-select: none;
+}
+
+.canvas.disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Solid dim layer with rects punched out via mask */
+.dim {
+  fill: rgba(15, 23, 42, 0.45);
+  pointer-events: none;
+}
+
+/* Saved rects */
+.rect {
+  fill: rgba(59, 130, 246, 0.08);
+  stroke: #3b82f6;
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
+  cursor: pointer;
+}
+
+.rect:hover {
+  fill: rgba(59, 130, 246, 0.15);
+}
+
+.rectSelected {
+  stroke: #f59e0b;
+  stroke-width: 2.5;
+  fill: rgba(245, 158, 11, 0.12);
+}
+
+/* In-progress drag */
+.preview {
+  fill: rgba(16, 185, 129, 0.15);
+  stroke: #10b981;
+  stroke-width: 2;
+  stroke-dasharray: 4 4;
+  vector-effect: non-scaling-stroke;
+  pointer-events: none;
+}
+
+/* Delete button rendered via a 1x1 foreignObject anchored at the rect's
+   top-right corner. The transform pulls it back INSIDE the rect so it never
+   renders off the top/right edge of the page. */
+.deleteBtn {
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* Shift left by its own width + a small inset, and down by a small inset, so
+     it sits just inside the rect's top-right corner. */
+  transform: translate(calc(-100% - 3px), 3px);
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  font-size: 16px;
+  line-height: 1;
+  font-weight: 700;
+  border-radius: 999px;
+  border: 1px solid #b91c1c;
+  background: #ef4444;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+}
+
+.deleteBtn:hover {
+  background: #dc2626;
+}

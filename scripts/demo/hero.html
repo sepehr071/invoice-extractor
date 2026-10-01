@@ -1,0 +1,43 @@
+<!doctype html>
+<!-- README banner: frames the real review-UI screenshot (docs/images/review-invoice.png).
+     Rendered to docs/images/hero.png by scripts/capture-screenshots.cjs. -->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap" />
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; width: 1280px; height: 640px; overflow: hidden;
+    font-family: "IBM Plex Sans", "Segoe UI", sans-serif;
+    background: #10152a; color: #e8ebf1;
+    display: grid; grid-template-columns: 400px 1fr; align-items: center;
+  }
+  .copy { padding: 0 24px 0 56px; }
+  h1 { margin: 0 0 16px; font-size: 44px; line-height: 1.05; font-weight: 600; letter-spacing: -0.03em; }
+  p { margin: 0 0 28px; font-size: 18px; line-height: 1.5; color: #a9b1c6; }
+  ul { margin: 0; padding: 0; list-style: none; font-size: 15px; color: #cfd5e3; }
+  li { padding: 8px 0; border-top: 1px solid #242b45; display: flex; gap: 10px; align-items: baseline; }
+  li b { color: #8e9bff; font-weight: 600; min-width: 64px; }
+  .note { margin-top: 22px; font-size: 12px; color: #6f7894; }
+  .shot {
+    height: 560px; margin-right: -120px; border-radius: 12px; overflow: hidden;
+    box-shadow: 0 30px 80px -20px rgba(0,0,0,.7), 0 0 0 1px rgba(255,255,255,.08);
+  }
+  .shot img { display: block; height: 100%; }
+</style>
+</head>
+<body>
+  <div class="copy">
+    <h1>invoice-ai</h1>
+    <p>OCR reads the page, an LLM extracts the fields, and every value links back to its box for human review.</p>
+    <ul>
+      <li><b>OCR</b>PaddleOCR PP-OCRv5, English and Persian</li>
+      <li><b>LLM</b>Ollama or OpenRouter, injection-guarded</li>
+      <li><b>Review</b>Field-to-bbox linking with rapidfuzz</li>
+    </ul>
+    <div class="note">Real UI, synthetic demo data (fictional Acme Trading invoice)</div>
+  </div>
+  <div class="shot"><img src="../../docs/images/review-invoice.png" alt="" /></div>
+</body>
+</html>

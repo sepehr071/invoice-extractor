@@ -1,0 +1,66 @@
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: auto;
+}
+
+.poly {
+  cursor: pointer;
+  transition: fill 120ms ease, stroke 120ms ease, stroke-width 120ms ease;
+}
+
+.token {
+  fill: transparent;
+  stroke: transparent;
+  stroke-width: 0;
+}
+
+.token:hover {
+  fill: rgba(0, 120, 255, 0.12);
+  stroke: rgba(0, 120, 255, 0.6);
+  stroke-width: 1.25;
+}
+
+.field {
+  stroke: var(--bbox-default-stroke, rgba(80, 80, 80, 0.4));
+  fill: var(--bbox-default-fill, rgba(80, 80, 80, 0.08));
+  stroke-width: 1.5;
+}
+
+.lineItem {
+  stroke: var(--bbox-default-stroke, rgba(80, 80, 80, 0.4));
+  fill: rgba(80, 80, 80, 0.04);
+  stroke-width: 1.25;
+  stroke-dasharray: 6 4;
+}
+
+.poly.hover {
+  stroke: var(--bbox-hover-stroke, rgba(255, 140, 0, 0.9));
+  fill: var(--bbox-hover-fill, rgba(255, 140, 0, 0.18));
+  stroke-width: 2;
+}
+
+.poly.active {
+  stroke: var(--bbox-active-stroke, rgba(0, 120, 255, 0.95));
+  fill: var(--bbox-active-fill, rgba(0, 120, 255, 0.18));
+  stroke-width: 2.5;
+  animation: bbox-pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes bbox-pulse {
+  0% {
+    filter: drop-shadow(0 0 0 rgba(0, 120, 255, 0));
+    stroke-width: 2.5;
+  }
+  50% {
+    filter: drop-shadow(0 0 6px rgba(0, 120, 255, 0.75));
+    stroke-width: 3.5;
+  }
+  100% {
+    filter: drop-shadow(0 0 0 rgba(0, 120, 255, 0));
+    stroke-width: 2.5;
+  }
+}

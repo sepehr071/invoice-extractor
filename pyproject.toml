@@ -1,0 +1,23 @@
+[project]
+name = "invoice-ai"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.32",
+    "python-multipart>=0.0.20",
+    "rapidfuzz>=3.10",
+    "openai>=1.50",
+    "pydantic>=2.9",
+    "python-dotenv>=1.0",
+    "pypdfium2>=4.30",
+    "paddleocr>=3.7.0",
+    "pillow>=10.0",
+    "inoutlists>=1.0.3",
+]
+
+[tool.setuptools.packages.find]
+include = ["app*"]
+exclude = ["output*", "frontend*", "data*", ".venv*"]

@@ -1,0 +1,104 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 3px 8px;
+  border-radius: 999px;
+  white-space: nowrap;
+  cursor: help;
+  border: 1px solid transparent;
+  user-select: none;
+}
+
+.md {
+  font-size: 11px;
+  padding: 4px 10px;
+}
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 800;
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.md .icon {
+  width: 16px;
+  height: 16px;
+  font-size: 11px;
+}
+
+.green {
+  background: rgba(16, 185, 129, 0.14);
+  color: #047857;
+  border-color: rgba(16, 185, 129, 0.32);
+}
+.green .icon {
+  background: #10b981;
+  color: #fff;
+}
+
+.yellow {
+  background: rgba(245, 158, 11, 0.18);
+  color: #b45309;
+  border-color: rgba(245, 158, 11, 0.4);
+}
+.yellow .icon {
+  background: #f59e0b;
+  color: #fff;
+}
+
+.red {
+  background: rgba(239, 68, 68, 0.18);
+  color: #b91c1c;
+  border-color: rgba(239, 68, 68, 0.4);
+  animation: redPulse 1.6s ease-in-out infinite;
+}
+.red .icon {
+  background: #ef4444;
+  color: #fff;
+}
+
+.notChecked {
+  background: #f3f4f6;
+  color: #6b7280;
+  border-color: #e5e7eb;
+}
+.notChecked .icon {
+  background: #d1d5db;
+  color: #374151;
+}
+
+.error {
+  background: rgba(239, 68, 68, 0.08);
+  color: #7f1d1d;
+  border-color: rgba(239, 68, 68, 0.32);
+}
+.error .icon {
+  background: #7f1d1d;
+  color: #fff;
+}
+
+@keyframes redPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.35);
+  }
+  50% {
+    box-shadow: 0 0 0 4px rgba(239, 68, 68, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .red {
+    animation: none;
+  }
+}

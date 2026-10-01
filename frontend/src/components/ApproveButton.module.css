@@ -1,0 +1,212 @@
+.wrap {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 6px;
+  position: relative;
+}
+
+.row {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.approveBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: #fff;
+  background: #15803d;
+  border: 1px solid #126c34;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(16, 122, 54, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  transition: filter 120ms ease, box-shadow 120ms ease, transform 60ms ease;
+  white-space: nowrap;
+}
+
+.approveBtn:hover:not(:disabled) {
+  filter: brightness(1.05);
+  box-shadow: 0 2px 6px rgba(16, 122, 54, 0.32),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.approveBtn:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.approveBtn:disabled {
+  background: #94c3a5;
+  border-color: #94c3a5;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Red disabled-styled (still clickable to open override form) variant.
+   Uses muted red so the user reads "needs attention" not "ready to go". */
+.approveBtnDanger {
+  background: linear-gradient(180deg, #f3a8a8, #e07676);
+  border-color: #c44b4b;
+  color: #4a0c0c;
+  box-shadow: 0 1px 2px rgba(127, 29, 29, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  cursor: pointer;
+}
+
+.approveBtnDanger:hover:not(:disabled) {
+  filter: brightness(1.03);
+  box-shadow: 0 2px 6px rgba(127, 29, 29, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.28);
+}
+
+.approveBtnDanger:disabled {
+  background: linear-gradient(180deg, #f3c5c5, #e3a4a4);
+  border-color: #c98a8a;
+  color: #6b1f1f;
+  cursor: not-allowed;
+}
+
+.reexportBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent-hover);
+  background: var(--accent-soft);
+  border: 1px solid rgba(37, 99, 235, 0.4);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 120ms ease, border-color 120ms ease;
+}
+.reexportBtn:hover:not(:disabled) {
+  background: var(--accent-soft);
+  border-color: rgba(37, 99, 235, 0.7);
+}
+.reexportBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Inline override form — anchored under the button (absolute) so it doesn't
+   blow up the header height when expanded. */
+.overrideForm {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  width: 360px;
+  padding: 14px;
+  background: var(--surface);
+  border: 1px solid rgba(220, 38, 38, 0.35);
+  border-radius: 10px;
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.18);
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  animation: override-in 140ms ease-out;
+}
+
+@keyframes override-in {
+  from { transform: translateY(-4px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+.overrideLabel {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--danger-text);
+  letter-spacing: 0.01em;
+}
+
+.overrideTextarea {
+  width: 100%;
+  padding: 8px 10px;
+  font-size: 12px;
+  font-family: inherit;
+  line-height: 1.4;
+  color: var(--text);
+  border: 1px solid var(--border-strong);
+  border-radius: 6px;
+  resize: vertical;
+  min-height: 64px;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 120ms ease, box-shadow 120ms ease;
+}
+.overrideTextarea:focus {
+  border-color: rgba(239, 68, 68, 0.6);
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.12);
+}
+
+.overrideMeta {
+  font-size: 11px;
+  color: var(--text-faint);
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+.overrideActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.cancelBtn {
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-2);
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 120ms ease;
+}
+.cancelBtn:hover:not(:disabled) {
+  background: var(--surface-2);
+}
+.cancelBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.confirmBtn {
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(180deg, #dc2626, #991b1b);
+  border: 1px solid #7f1d1d;
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(127, 29, 29, 0.28);
+  transition: filter 120ms ease;
+}
+.confirmBtn:hover:not(:disabled) {
+  filter: brightness(1.08);
+}
+.confirmBtn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  filter: grayscale(0.3);
+}
+
+.inlineError {
+  padding: 6px 10px;
+  background: var(--danger-soft);
+  border: 1px solid var(--danger-border);
+  border-radius: 6px;
+  color: var(--danger-text);
+  font-size: 11px;
+  line-height: 1.4;
+  max-width: 360px;
+}

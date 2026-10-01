@@ -1,0 +1,174 @@
+.row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  gap: 12px;
+  align-items: center;
+  padding: 8px 10px 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 120ms ease, box-shadow 120ms ease;
+  box-shadow: inset 2px 0 0 0 transparent;
+}
+
+@media (max-width: 720px) {
+  .row {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+}
+
+.row:hover {
+  background: rgba(37, 99, 235, 0.04);
+}
+
+.active {
+  background: rgba(37, 99, 235, 0.08);
+}
+
+.active::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(37, 99, 235, 0.35);
+  border-radius: 8px;
+  pointer-events: none;
+}
+
+/* Left-border tint by confidence tier. Uses inset box-shadow so it doesn't
+   fight border-radius or the .active outline. */
+.tierHigh {
+  box-shadow: inset 2px 0 0 0 rgba(16, 185, 129, 0.55);
+}
+.tierMid {
+  box-shadow: inset 2px 0 0 0 rgba(245, 158, 11, 0.6);
+}
+.tierLow {
+  box-shadow: inset 2px 0 0 0 rgba(107, 114, 128, 0.55);
+}
+.tierNone {
+  box-shadow: inset 2px 0 0 0 var(--border);
+}
+.tierEdited {
+  box-shadow: inset 2px 0 0 0 rgba(99, 102, 241, 0.6);
+}
+
+.label {
+  font-size: 12px;
+  color: var(--text-2);
+  font-weight: 500;
+  cursor: pointer;
+  user-select: none;
+  overflow: hidden;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+
+.labelText {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+}
+
+.editedDot {
+  flex: 0 0 auto;
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(99, 102, 241, 0.85);
+  display: inline-block;
+}
+
+.inputWrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.input {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 7px 10px;
+  font-size: 13px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--text);
+  outline: none;
+  transition: border-color 120ms ease, box-shadow 120ms ease, background 120ms ease;
+  font-variant-numeric: tabular-nums;
+}
+
+.input::placeholder {
+  color: #d1d5db;
+}
+
+.input:hover {
+  border-color: var(--border-strong);
+}
+
+.input:focus {
+  border-color: rgba(37, 99, 235, 0.7);
+  background: var(--surface);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.input:disabled {
+  background: var(--surface-2);
+  color: var(--text-muted);
+  cursor: not-allowed;
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+  cursor: help;
+}
+
+.scoreNum {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-faint);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.01em;
+  min-width: 14px;
+  text-align: right;
+}
+
+/* When the confidence toggle is ON, make the inline score more prominent. */
+.scoreNumStrong {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.glyph {
+  width: 16px;
+  height: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  line-height: 1;
+  border-radius: 999px;
+}
+
+/* Glyph color tiers — quiet, no background fill. */
+.glyph.tierHigh {
+  color: rgb(16, 185, 129);
+}
+.glyph.tierMid {
+  color: rgb(217, 119, 6);
+}
+.glyph.tierLow {
+  color: var(--text-faint);
+}
+.glyph.tierNone {
+  color: #cbd5e1;
+}

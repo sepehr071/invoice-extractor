@@ -1,0 +1,95 @@
+<!doctype html>
+<!-- Synthetic demo invoice (fictional company, people and bank details).
+     Rendered to PNG by scripts/capture-screenshots.cjs. Every `.t` span becomes
+     one fake OCR token; `data-f` marks the span(s) an extracted field links to. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style>
+  body { margin: 0; width: 1240px; height: 1754px; background: #fff; color: #1d232a;
+    font-family: "Segoe UI", Arial, sans-serif; font-size: 22px; }
+  .page { padding: 90px 100px; }
+  .top { display: flex; justify-content: space-between; align-items: flex-start; }
+  .logo { display: flex; gap: 18px; align-items: center; }
+  .mark { width: 64px; height: 64px; border-radius: 14px; background: #1f5f8b; }
+  .co { font-size: 34px; font-weight: 700; letter-spacing: -0.5px; }
+  .small { font-size: 19px; color: #505a64; line-height: 1.55; }
+  h1 { font-size: 52px; margin: 0; letter-spacing: 2px; color: #1f5f8b; text-align: right; }
+  .meta { margin-top: 12px; text-align: right; line-height: 1.7; }
+  .meta b { color: #505a64; font-weight: 600; }
+  .parties { display: flex; gap: 60px; margin-top: 70px; }
+  .parties > div { flex: 1; }
+  .lbl { font-size: 17px; font-weight: 700; color: #1f5f8b; letter-spacing: 1px; margin-bottom: 8px; }
+  table { width: 100%; border-collapse: collapse; margin-top: 60px; }
+  th { text-align: left; font-size: 18px; color: #fff; background: #1f5f8b; padding: 14px 12px; }
+  td { padding: 16px 12px; border-bottom: 1px solid #d5dbe1; }
+  .num { text-align: right; }
+  .totals { margin-top: 30px; margin-left: auto; width: 460px; line-height: 2; }
+  .totals div { display: flex; justify-content: space-between; }
+  .grand { font-size: 28px; font-weight: 700; border-top: 2px solid #1d232a; margin-top: 6px; padding-top: 6px; }
+  .bank { margin-top: 70px; padding: 26px 30px; background: #f2f5f8; border-radius: 10px; line-height: 1.7; }
+  .foot { margin-top: 60px; font-size: 17px; color: #7a848e; }
+</style>
+</head>
+<body><div class="page">
+  <div class="top">
+    <div>
+      <div class="logo"><div class="mark"></div><div class="co"><span class="t" data-f="company_name">Acme Trading Co.</span></div></div>
+      <div class="small" style="margin-top:18px">
+        <span class="t" data-f="company_address">12 Harbor Road, Unit 4, Port Example</span><br>
+        <span class="t" data-f="company_country">United Arab Emirates</span><br>
+        <span class="t">Tel:</span> <span class="t" data-f="company_phone">+971 4 000 0000</span>
+      </div>
+    </div>
+    <div>
+      <h1><span class="t" data-f="invoice_type">COMMERCIAL INVOICE</span></h1>
+      <div class="meta">
+        <b class="t">Invoice No.</b> <span class="t" data-f="invoice_number">ACM-2025-0417</span><br>
+        <b class="t">Date</b> <span class="t" data-f="invoice_date">2025-03-14</span><br>
+        <b class="t">Currency</b> <span class="t" data-f="currency">USD</span><br>
+        <b class="t">Incoterm</b> <span class="t" data-f="incoterm">FOB Port Example</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="parties">
+    <div>
+      <div class="lbl t">BILL TO</div>
+      <div><span class="t" data-f="customer_name">Bob's Hardware Supply</span></div>
+      <div class="small"><span class="t">Attn: Alice Example, Purchasing</span></div>
+    </div>
+    <div>
+      <div class="lbl t">SHIP TO</div>
+      <div><span class="t" data-f="consignee_name">Bob's Hardware Warehouse</span></div>
+      <div class="small"><span class="t" data-f="consignee_address">88 Sample Street, Testville</span></div>
+    </div>
+  </div>
+
+  <table>
+    <thead><tr><th class="t">#</th><th class="t">Description</th><th class="t num">Qty</th><th class="t">Unit</th><th class="t num">Unit price</th><th class="t num">Amount</th></tr></thead>
+    <tbody>
+      <tr data-row="0"><td class="t">1</td><td class="t">Stainless steel hinges, 100 mm</td><td class="t num">1,200</td><td class="t">pcs</td><td class="t num">0.85</td><td class="t num">1,020.00</td></tr>
+      <tr data-row="1"><td class="t">2</td><td class="t">Brass cabinet handles, satin</td><td class="t num">600</td><td class="t">pcs</td><td class="t num">2.40</td><td class="t num">1,440.00</td></tr>
+      <tr data-row="2"><td class="t">3</td><td class="t">Wood screws 4x40, zinc</td><td class="t num">80</td><td class="t">box</td><td class="t num">6.50</td><td class="t num">520.00</td></tr>
+      <tr data-row="3"><td class="t">4</td><td class="t">Drawer slides, soft-close 450 mm</td><td class="t num">150</td><td class="t">pair</td><td class="t num">7.90</td><td class="t num">1,185.00</td></tr>
+    </tbody>
+  </table>
+
+  <div class="totals">
+    <div><span class="t">Subtotal</span><span class="t">4,165.00</span></div>
+    <div><span class="t">Freight</span><span class="t">235.00</span></div>
+    <div class="grand"><span class="t">Total USD</span><span class="t" data-f="total_amount">4,400.00</span></div>
+  </div>
+
+  <div class="bank">
+    <div class="lbl t">PAYMENT DETAILS</div>
+    <div><span class="t">Bank:</span> <span class="t" data-f="bank.bank_name">Example National Bank</span></div>
+    <div><span class="t">SWIFT:</span> <span class="t" data-f="bank.swift_code">EXNBAEXX</span></div>
+    <div><span class="t">Beneficiary:</span> <span class="t" data-f="bank.beneficiary">Acme Trading Co.</span></div>
+    <div><span class="t">IBAN (USD):</span> <span class="t">AE00 0000 0000 0000 0000 000</span></div>
+    <div><span class="t" data-f="payment_terms">30% deposit, balance before shipment</span></div>
+  </div>
+
+  <div class="foot"><span class="t">Demo document. Fictional company and bank details, generated for screenshots.</span></div>
+</div></body>
+</html>

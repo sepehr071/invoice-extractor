@@ -1,0 +1,51 @@
+<!doctype html>
+<!-- Synthetic Persian demo invoice (fictional sellers, buyers and numbers).
+     Rendered to PNG by scripts/capture-screenshots.cjs. `.t` spans become fake
+     OCR tokens; `data-f` holds the JSON path an extracted value links to. -->
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<style>
+  body { margin: 0; width: 1240px; height: 1754px; background: #fff; color: #222;
+    font-family: Tahoma, "Segoe UI", sans-serif; font-size: 23px; }
+  .page { padding: 90px 100px; }
+  h1 { text-align: center; font-size: 44px; margin: 0 0 50px; }
+  .box { border: 2px solid #333; padding: 22px 28px; line-height: 2; margin-bottom: 26px; }
+  .row { display: flex; gap: 40px; }
+  .lbl { font-weight: 700; }
+  table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+  th, td { border: 2px solid #333; padding: 14px 12px; text-align: center; }
+  th { background: #eee; }
+  .sum { margin-top: 26px; font-size: 28px; font-weight: 700; }
+  .foot { margin-top: 60px; font-size: 18px; color: #777; }
+</style>
+</head>
+<body><div class="page">
+  <h1 class="t">صورتحساب فروش کالا و خدمات</h1>
+  <div class="box">
+    <div class="row">
+      <div><span class="lbl t">شماره:</span> <span class="t" data-f="invoice.number">۱۴۰۴-۰۲۱۸</span></div>
+      <div><span class="lbl t">تاریخ:</span> <span class="t" data-f="invoice.date">۱۴۰۴/۰۲/۱۸</span></div>
+    </div>
+  </div>
+  <div class="box">
+    <div><span class="lbl t">فروشنده:</span> <span class="t" data-f="seller.name">شرکت بازرگانی آلفا (نمونه)</span></div>
+    <div><span class="lbl t">نشانی:</span> <span class="t" data-f="seller.address">تهران، خیابان نمونه، پلاک ۱۲</span></div>
+    <div><span class="lbl t">تلفن:</span> <span class="t" data-f="seller.phone">۰۲۱-۰۰۰۰۰۰۰۰</span></div>
+  </div>
+  <div class="box">
+    <div><span class="lbl t">خریدار:</span> <span class="t" data-f="buyer.name">فروشگاه لوازم خانگی بتا</span></div>
+    <div><span class="lbl t">نشانی:</span> <span class="t" data-f="buyer.address">اصفهان، بلوار آزمایشی، واحد ۳</span></div>
+  </div>
+  <table>
+    <thead><tr><th class="t">ردیف</th><th class="t">شرح کالا</th><th class="t">تعداد</th><th class="t">فی (ریال)</th><th class="t">مبلغ کل (ریال)</th></tr></thead>
+    <tbody>
+      <tr><td class="t">۱</td><td class="t" data-f="items[0].description">کتری برقی استیل</td><td class="t" data-f="items[0].quantity">۲۰</td><td class="t">۱۸٬۵۰۰٬۰۰۰</td><td class="t">۳۷۰٬۰۰۰٬۰۰۰</td></tr>
+      <tr><td class="t">۲</td><td class="t" data-f="items[1].description">چای&zwnj;ساز رومیزی</td><td class="t" data-f="items[1].quantity">۱۲</td><td class="t">۲۴٬۰۰۰٬۰۰۰</td><td class="t">۲۸۸٬۰۰۰٬۰۰۰</td></tr>
+      <tr><td class="t">۳</td><td class="t" data-f="items[2].description">توستر دو خانه</td><td class="t" data-f="items[2].quantity">۸</td><td class="t">۱۵٬۰۰۰٬۰۰۰</td><td class="t">۱۲۰٬۰۰۰٬۰۰۰</td></tr>
+    </tbody>
+  </table>
+  <div class="sum"><span class="t">جمع کل:</span> <span class="t" data-f="total_rial">۷۷۸٬۰۰۰٬۰۰۰ ریال</span></div>
+  <div class="foot"><span class="t">سند نمونه برای تصاویر نمایشی؛ همه نام&zwnj;ها و اعداد ساختگی هستند.</span></div>
+</div></body>
+</html>

@@ -1,0 +1,42 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+*.pyc
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+.venv/
+
+# Secrets
+.env
+
+# OCR outputs
+output/
+*_ocr.jpg
+
+# Per-job artifacts + SQLite
+data/
+*.db
+*.sqlite
+*.sqlite3
+
+# Tooling caches / logs
+.pytest_cache/
+*.log
+test-results/
+playwright-report/
+
+# Frontend
+node_modules/
+frontend/dist/
+
+# Claude Code session state
+.claude/
+
+# Your own invoices go in samples/ but are never committed (see samples/README.md)
+samples/*
+!samples/README.md

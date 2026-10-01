@@ -1,0 +1,335 @@
+.pane {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 0 18px 32px;
+  overflow-y: auto;
+  height: 100%;
+  box-sizing: border-box;
+  background: var(--surface-3);
+  position: relative;
+}
+
+.disabled {
+  filter: grayscale(0.1);
+}
+
+.approvedBanner {
+  padding: 10px 14px;
+  background: rgba(16, 185, 129, 0.12);
+  color: #0a7c5b;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 8px;
+  border: 1px solid rgba(16, 185, 129, 0.32);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.approvedBanner::before {
+  content: "✓";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  background: #16a34a;
+  color: #fff;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.emptyExtraction {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px 14px;
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  border-radius: 8px;
+  color: #92400e;
+}
+
+.emptyExtraction strong {
+  font-size: 12.5px;
+  font-weight: 700;
+  display: block;
+}
+
+.emptyExtraction p {
+  margin: 4px 0 0;
+  font-size: 12px;
+  line-height: 1.45;
+  color: #b45309;
+}
+
+.emptyExtractionIcon {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  margin-top: 1px;
+  background: #d97706;
+  color: #fff;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+/* ─── sticky chip bar ─────────────────────────────────────────── */
+
+.chipBar {
+  position: sticky;
+  top: 0;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0 8px;
+  margin: 0 -18px;
+  padding-left: 18px;
+  padding-right: 18px;
+  background: color-mix(in srgb, var(--bg) 92%, transparent);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--border);
+}
+
+.chipRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 5px 11px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-2);
+  cursor: pointer;
+  transition: background 120ms ease, color 120ms ease, border-color 120ms ease;
+  white-space: nowrap;
+}
+
+.chip:hover {
+  background: var(--surface-2);
+  color: var(--text);
+  border-color: var(--border-strong);
+}
+
+.chipActive,
+.chipActive:hover {
+  background: var(--text);
+  color: var(--surface);
+  border-color: var(--text);
+}
+
+.chipCount {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  height: 16px;
+  padding: 0 5px;
+  background: var(--surface-3);
+  color: var(--text-2);
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.chipActive .chipCount {
+  background: color-mix(in srgb, currentColor 18%, transparent);
+  color: inherit;
+}
+
+/* ─── sections (collapsible) ──────────────────────────────────── */
+
+.section {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+  scroll-margin-top: 64px;
+}
+
+.section:hover {
+  border-color: var(--border-strong);
+}
+
+.sectionCollapsed .sectionHeader {
+  border-bottom: none;
+}
+
+.sectionHeader {
+  all: unset;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 14px;
+  cursor: pointer;
+  border-bottom: 1px solid var(--border);
+  user-select: none;
+}
+
+.sectionHeader:hover {
+  background: var(--surface-2);
+}
+
+.sectionHeader:focus-visible {
+  outline: 2px solid #93c5fd;
+  outline-offset: -2px;
+}
+
+.sectionCaret {
+  display: inline-block;
+  width: 12px;
+  font-size: 10px;
+  color: var(--text-faint);
+  text-align: center;
+}
+
+.sectionTitleText {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  text-transform: capitalize;
+  color: var(--text);
+}
+
+.sectionCount {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 18px;
+  padding: 0 6px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.sectionLinked {
+  margin-left: auto;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-faint);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.sectionLinkedFull {
+  color: var(--success);
+}
+
+.sectionBody {
+  display: flex;
+  flex-direction: column;
+  padding: 6px 14px 10px;
+}
+
+.placeholder {
+  padding: 32px;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.remarkEmpty {
+  color: var(--text-faint);
+  font-size: 12px;
+  padding: 8px 12px;
+  text-align: center;
+}
+
+.subsection {
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px dashed var(--border);
+}
+
+.subsectionTitle {
+  margin: 0 0 6px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: capitalize;
+  color: var(--text-muted);
+}
+
+.subgroup {
+  display: flex;
+  flex-direction: column;
+  padding: 6px 0;
+  border-bottom: 1px dotted var(--border);
+}
+
+.subgroup:last-child {
+  border-bottom: none;
+}
+
+/* ─── confidence toggle (right side of chip bar) ──────────────── */
+
+.toggleBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 5px 12px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-2);
+  cursor: pointer;
+  transition: background 120ms ease, color 120ms ease, border-color 120ms ease;
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
+.toggleBtn:hover {
+  background: var(--surface-2);
+  color: var(--text);
+  border-color: var(--border-strong);
+}
+
+.toggleBtnOn {
+  background: rgba(16, 185, 129, 0.12);
+  color: #047857;
+  border-color: rgba(16, 185, 129, 0.4);
+}
+
+.toggleBtnOn:hover {
+  background: rgba(16, 185, 129, 0.18);
+  color: #065f46;
+  border-color: rgba(16, 185, 129, 0.6);
+}
+
+.toggleDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: #d1d5db;
+  transition: background 120ms ease;
+}
+
+.toggleBtnOn .toggleDot {
+  background: #10b981;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.18);
+}

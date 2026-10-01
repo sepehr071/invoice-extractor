@@ -1,0 +1,270 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tableToolbar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.colToggle {
+  border: 1px solid var(--border-strong);
+  background: var(--surface);
+  color: var(--text-2);
+  padding: 5px 11px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.12s ease, color 0.12s ease, border-color 0.12s ease;
+}
+.colToggle:hover {
+  background: var(--surface-2);
+  color: var(--text);
+  border-color: #b8b8c2;
+}
+.colToggleOn {
+  background: var(--accent-soft);
+  color: var(--accent-hover);
+  border-color: #93c5fd;
+}
+
+.tableScroll {
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--surface);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  table-layout: fixed;
+}
+
+.headerCell {
+  text-align: left;
+  font-weight: 600;
+  font-size: 12px;
+  color: var(--text-muted);
+  background: var(--surface-2);
+  padding: 8px 6px;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.row {
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  transition: background 0.12s ease;
+}
+
+.row:hover {
+  background: var(--surface-2);
+}
+
+.activeRow {
+  background: var(--accent-soft) !important;
+  box-shadow: inset 3px 0 0 var(--active-color, rgba(0, 120, 255, 0.95));
+}
+
+.editedRow .cellInput {
+  background: var(--accent-soft);
+}
+
+.newRow {
+  background: var(--warn-soft);
+}
+
+.cell {
+  padding: 2px 4px;
+  vertical-align: middle;
+}
+
+/* Freeze the leading "#" + Product columns so they stay visible while
+   scrolling horizontally. "#" pins to the left edge (44px wide); Product pins
+   immediately after it at left:44px and carries the divider shadow. */
+.stickyNoCell,
+.stickyCell {
+  position: sticky;
+  z-index: 1;
+  background: var(--surface);
+}
+.stickyNoCell {
+  left: 0;
+}
+.stickyCell {
+  left: 44px;
+  box-shadow: 1px 0 0 var(--border);
+}
+.row:hover .stickyNoCell,
+.row:hover .stickyCell {
+  background: var(--surface-2);
+}
+.activeRow .stickyNoCell,
+.activeRow .stickyCell {
+  background: var(--accent-soft);
+}
+.newRow .stickyNoCell,
+.newRow .stickyCell {
+  background: var(--warn-soft);
+}
+.editedRow .stickyNoCell,
+.editedRow .stickyCell {
+  background: var(--accent-soft);
+}
+
+.stickyNoHeader,
+.stickyHeader {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  background: var(--surface-2);
+}
+.stickyNoHeader {
+  left: 0;
+}
+.stickyHeader {
+  left: 44px;
+  box-shadow: 1px 0 0 var(--border);
+}
+
+.cellInput {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 5px 6px;
+  font-size: 12px;
+  border: 1px solid transparent;
+  background: transparent;
+  border-radius: 4px;
+  outline: none;
+  color: var(--text);
+  transition: border-color 0.12s ease, background 0.12s ease;
+}
+
+.cellInput:hover:not(:disabled) {
+  border-color: var(--border-strong);
+  background: var(--surface);
+}
+
+.cellInput:focus {
+  border-color: var(--active-color, rgba(0, 120, 255, 0.95));
+  background: var(--surface);
+  box-shadow: 0 0 0 2px rgba(0, 120, 255, 0.15);
+}
+
+.cellInput:disabled {
+  color: var(--text-muted);
+  cursor: not-allowed;
+}
+
+.actionCell {
+  text-align: center;
+  white-space: nowrap;
+}
+
+.deleteBtn,
+.cancelBtn,
+.saveBtn {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+  padding: 4px 6px;
+  border-radius: 4px;
+  color: var(--text-faint);
+  transition: color 0.12s ease, background 0.12s ease;
+}
+
+.deleteBtn:hover:not(:disabled),
+.cancelBtn:hover:not(:disabled) {
+  color: #d11;
+  background: var(--danger-soft);
+}
+
+.saveBtn {
+  color: #1d8a4f;
+}
+
+.saveBtn:hover:not(:disabled) {
+  background: var(--success-soft);
+}
+
+.deleteBtn:disabled,
+.cancelBtn:disabled,
+.saveBtn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Inline styled delete confirm — replaces window.confirm. */
+.confirmDelete {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+.confirmDeleteText {
+  font-size: 11px;
+  color: #92400e;
+  max-width: 160px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.confirmYes {
+  border: 1px solid #b91c1c;
+  background: #ef4444;
+  color: #fff;
+  padding: 3px 9px;
+  border-radius: 5px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.confirmYes:hover {
+  background: #dc2626;
+}
+.confirmNo {
+  border: 1px solid var(--border-strong);
+  background: var(--surface);
+  color: var(--text-2);
+  padding: 3px 9px;
+  border-radius: 5px;
+  font-size: 11px;
+  cursor: pointer;
+}
+.confirmNo:hover {
+  background: var(--surface-2);
+}
+
+.empty {
+  text-align: center;
+  padding: 16px;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.addBtn {
+  align-self: flex-start;
+  padding: 6px 12px;
+  border: 1px dashed #b8b8c2;
+  background: transparent;
+  color: var(--text-2);
+  border-radius: 6px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: border-color 0.12s ease, color 0.12s ease, background 0.12s ease;
+}
+
+.addBtn:hover {
+  border-color: var(--active-color, rgba(0, 120, 255, 0.95));
+  color: var(--active-color, rgba(0, 120, 255, 0.95));
+  background: var(--accent-soft);
+}
